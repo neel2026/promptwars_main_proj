@@ -1,5 +1,12 @@
 import PropTypes from 'prop-types';
 
+const PatternInsightPropTypes = {
+  pattern:        PropTypes.string,
+  insight:        PropTypes.string,
+  recommendation: PropTypes.string,
+  isLoading:      PropTypes.bool,
+};
+
 /**
  * PatternInsight — displays AI-detected emotional pattern callout.
  */
@@ -35,12 +42,7 @@ function PatternInsight({ pattern, insight, recommendation, isLoading }) {
   );
 }
 
-PatternInsight.propTypes = {
-  pattern:        PropTypes.string,
-  insight:        PropTypes.string,
-  recommendation: PropTypes.string,
-  isLoading:      PropTypes.bool,
-};
+PatternInsight.propTypes = PatternInsightPropTypes;
 
 PatternInsight.defaultProps = {
   pattern:        null,

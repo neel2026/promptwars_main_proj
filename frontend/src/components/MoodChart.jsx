@@ -5,6 +5,24 @@ import {
 } from 'recharts';
 import { getMoodColor, getMoodLabel, formatDayShort } from '../utils/mood';
 
+const MoodTooltipPropTypes = {
+  active:  PropTypes.bool,
+  payload: PropTypes.array,
+};
+
+const entryShape = PropTypes.shape({
+  timestamp: PropTypes.number.isRequired,
+  moodScore: PropTypes.number.isRequired,
+});
+
+const MoodChartPropTypes = {
+  entries: PropTypes.arrayOf(entryShape).isRequired,
+};
+
+const CSSFallbackChartPropTypes = {
+  entries: PropTypes.arrayOf(entryShape).isRequired,
+};
+
 /** Custom tooltip for the recharts line chart */
 function MoodTooltip({ active, payload }) {
   if (!active || !payload || payload.length === 0) return null;
@@ -19,10 +37,7 @@ function MoodTooltip({ active, payload }) {
   );
 }
 
-MoodTooltip.propTypes = {
-  active:  PropTypes.bool,
-  payload: PropTypes.array,
-};
+MoodTooltip.propTypes = MoodTooltipPropTypes;
 
 MoodTooltip.defaultProps = {
   active:  false,
@@ -52,12 +67,7 @@ function CSSFallbackChart({ entries }) {
   );
 }
 
-CSSFallbackChart.propTypes = {
-  entries: PropTypes.arrayOf(PropTypes.shape({
-    timestamp: PropTypes.number.isRequired,
-    moodScore: PropTypes.number.isRequired,
-  })).isRequired,
-};
+CSSFallbackChart.propTypes = CSSFallbackChartPropTypes;
 
 /**
  * MoodChart — 7-day mood history line chart using recharts.
@@ -121,11 +131,6 @@ function MoodChart({ entries }) {
   }
 }
 
-MoodChart.propTypes = {
-  entries: PropTypes.arrayOf(PropTypes.shape({
-    timestamp: PropTypes.number.isRequired,
-    moodScore: PropTypes.number.isRequired,
-  })).isRequired,
-};
+MoodChart.propTypes = MoodChartPropTypes;
 
 export default MoodChart;

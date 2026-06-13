@@ -6,6 +6,13 @@
 /** Valid exam types */
 export const EXAM_TYPES = ['NEET', 'JEE', 'UPSC', 'CAT', 'GATE', 'CUET'];
 
+/** Minimum entries required to run pattern analysis */
+export const MIN_ENTRIES_FOR_PATTERN = 2;
+
+/** Mood score boundaries */
+export const MOOD_MIN = 1;
+export const MOOD_MAX = 10;
+
 /**
  * Returns a human-readable label for a mood score.
  * @param {number} score - 1–10

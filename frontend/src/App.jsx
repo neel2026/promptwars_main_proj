@@ -6,7 +6,7 @@ import MoodChart     from './components/MoodChart';
 import PatternInsight from './components/PatternInsight';
 import { useMoodHistory } from './hooks/useMoodHistory';
 import { useWellness }    from './hooks/useWellness';
-import { calculateStreak } from './utils/mood';
+import { calculateStreak, MIN_ENTRIES_FOR_PATTERN } from './utils/mood';
 
 const PROFILE_KEY = 'mindpath_profile';
 
@@ -43,7 +43,7 @@ export default function App() {
 
   // Auto-fetch pattern when we have enough data and a profile
   useEffect(() => {
-    if (profile && last7.length >= 2 && view === 'checkin') {
+    if (profile && last7.length >= MIN_ENTRIES_FOR_PATTERN && view === 'checkin') {
       fetchPattern({ name: profile.name, examType: profile.examType });
     }
   }, [last7.length, profile, view]); // eslint-disable-line react-hooks/exhaustive-deps

@@ -1,9 +1,16 @@
 import { useState, useCallback, useId } from 'react';
 import PropTypes from 'prop-types';
 import { getMoodColor, getMoodLabel } from '../utils/mood';
-import { validateJournalEntry } from '../utils/validation';
+import { validateJournalEntry, MAX_JOURNAL_LENGTH } from '../utils/validation';
 
-const MAX_CHARS = 1000;
+const MAX_CHARS = MAX_JOURNAL_LENGTH;
+
+const DailyCheckInPropTypes = {
+  studentName: PropTypes.string.isRequired,
+  examType:    PropTypes.string.isRequired,
+  onSubmit:    PropTypes.func.isRequired,
+  isLoading:   PropTypes.bool.isRequired,
+};
 
 /**
  * DailyCheckIn — mood slider + journal textarea + submit.
@@ -150,11 +157,6 @@ function DailyCheckIn({ studentName, examType, onSubmit, isLoading }) {
   );
 }
 
-DailyCheckIn.propTypes = {
-  studentName:  PropTypes.string.isRequired,
-  examType:     PropTypes.string.isRequired,
-  onSubmit:     PropTypes.func.isRequired,
-  isLoading:    PropTypes.bool.isRequired,
-};
+DailyCheckIn.propTypes = DailyCheckInPropTypes;
 
 export default DailyCheckIn;

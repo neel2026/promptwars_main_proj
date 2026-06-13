@@ -6,6 +6,10 @@
 
 const VALID_EXAM_TYPES = ['NEET', 'JEE', 'UPSC', 'CAT', 'GATE', 'CUET'];
 
+export const MAX_NAME_LENGTH    = 100;
+export const MIN_JOURNAL_LENGTH = 5;
+export const MAX_JOURNAL_LENGTH = 1000;
+
 /**
  * Validates a student name.
  * @param {string} name
@@ -15,8 +19,8 @@ export function validateName(name) {
   if (typeof name !== 'string' || name.trim().length === 0) {
     return { valid: false, error: 'Please enter your name.' };
   }
-  if (name.trim().length > 100) {
-    return { valid: false, error: 'Name must be 100 characters or fewer.' };
+  if (name.trim().length > MAX_NAME_LENGTH) {
+    return { valid: false, error: `Name must be ${MAX_NAME_LENGTH} characters or fewer.` };
   }
   return { valid: true, error: null };
 }
@@ -55,11 +59,11 @@ export function validateJournalEntry(text) {
   if (typeof text !== 'string' || text.trim().length === 0) {
     return { valid: false, error: "What's on your mind? Write at least a few words." };
   }
-  if (text.trim().length < 5) {
+  if (text.trim().length < MIN_JOURNAL_LENGTH) {
     return { valid: false, error: 'Please share a bit more — a few sentences help the AI understand.' };
   }
-  if (text.trim().length > 1000) {
-    return { valid: false, error: 'Journal entry must be 1000 characters or fewer.' };
+  if (text.trim().length > MAX_JOURNAL_LENGTH) {
+    return { valid: false, error: `Journal entry must be ${MAX_JOURNAL_LENGTH} characters or fewer.` };
   }
   return { valid: true, error: null };
 }

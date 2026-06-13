@@ -6,6 +6,7 @@
 import { useState, useCallback, useRef } from 'react';
 import { analyzeWellness, analyzePattern } from '../utils/api';
 import { validateJournalEntry, validateMoodScore } from '../utils/validation';
+import { MIN_ENTRIES_FOR_PATTERN } from '../utils/mood';
 
 /**
  * @param {{ addEntry: Function, last7: Array, recentMoodScores: number[] }} historyHook
@@ -68,7 +69,7 @@ export function useWellness({ addEntry, last7, recentMoodScores }) {
   }, [addEntry, recentMoodScores]);
 
   const fetchPattern = useCallback(async ({ name, examType }) => {
-    if (last7.length < 2 || isLoadingPattern) return;
+    if (last7.length < MIN_ENTRIES_FOR_PATTERN || isLoadingPattern) return;
     setIsLoadingPattern(true);
     setPatternData(null);
 

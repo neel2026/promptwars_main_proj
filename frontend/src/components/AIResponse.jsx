@@ -1,6 +1,21 @@
 import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
+const AIResponsePropTypes = {
+  response: PropTypes.shape({
+    acknowledgment: PropTypes.string.isRequired,
+    trigger:        PropTypes.string,
+    copingStrategy: PropTypes.shape({
+      title:      PropTypes.string.isRequired,
+      steps:      PropTypes.arrayOf(PropTypes.string),
+      whyItWorks: PropTypes.string,
+    }),
+    encouragement: PropTypes.string,
+  }).isRequired,
+  studentName: PropTypes.string.isRequired,
+  onNewEntry:  PropTypes.func.isRequired,
+};
+
 /**
  * Splits text into words and streams them in with a typewriter effect.
  * @param {string} text
@@ -114,19 +129,6 @@ function AIResponse({ response, studentName, onNewEntry }) {
   );
 }
 
-AIResponse.propTypes = {
-  response: PropTypes.shape({
-    acknowledgment: PropTypes.string.isRequired,
-    trigger:        PropTypes.string,
-    copingStrategy: PropTypes.shape({
-      title:       PropTypes.string.isRequired,
-      steps:       PropTypes.arrayOf(PropTypes.string),
-      whyItWorks:  PropTypes.string,
-    }),
-    encouragement: PropTypes.string,
-  }).isRequired,
-  studentName: PropTypes.string.isRequired,
-  onNewEntry:  PropTypes.func.isRequired,
-};
+AIResponse.propTypes = AIResponsePropTypes;
 
 export default AIResponse;

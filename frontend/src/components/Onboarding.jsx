@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { validateName, validateExamType } from '../utils/validation';
+import { validateName, validateExamType, MAX_NAME_LENGTH } from '../utils/validation';
 import { EXAM_TYPES } from '../utils/mood';
+
+const OnboardingPropTypes = {
+  onComplete: PropTypes.func.isRequired,
+};
 
 const EXAM_LABELS = {
   NEET: 'NEET (Medical)',
@@ -61,7 +65,7 @@ function Onboarding({ onComplete }) {
               placeholder="Your first name"
               value={name}
               autoComplete="given-name"
-              maxLength={100}
+              maxLength={MAX_NAME_LENGTH}
               onChange={e => {
                 setName(e.target.value);
                 if (errors.name) setErrors(prev => ({ ...prev, name: null }));
@@ -107,8 +111,6 @@ function Onboarding({ onComplete }) {
   );
 }
 
-Onboarding.propTypes = {
-  onComplete: PropTypes.func.isRequired,
-};
+Onboarding.propTypes = OnboardingPropTypes;
 
 export default Onboarding;
