@@ -1,0 +1,33 @@
+Use ALL relevant skills from the .agents/skills/ folder for this project — including promptwars-execution, frontend-expert, ai-ml-developer, impecable, and any others that apply based on the challenge.
+
+## THE CHALLENGE
+Build a simple AI micro-app that helps a user generate a personal cooking to-do list based on their day.
+
+## RULES
+- Read every skill's SKILL.md before writing a single line of code
+- Create HACKATHON_PLAN.md first — map every requirement, core user journey, tech stack, feature priority list, and what "done" looks like
+- Build all necessary features in priority order — do not skip mandatory requirements
+- After each major phase, create a git checkpoint (git add . && git commit -m "checkpoint: [phase name]") so we can always roll back
+- Do not add unnecessary complexity, animations, or features that don't serve the core user journey
+- UI must be clean, polished, and production-quality — no placeholder text, no broken states, no lorem ipsum
+- Generate PITCH.md only after the working build is verified end-to-end
+- Do not deploy unless I explicitly say "deploy now"
+
+## PHASE ORDER
+1. Read all relevant SKILL.md files
+2. Analyze challenge fully — write HACKATHON_PLAN.md
+3. Build core feature (the single thing that makes it work)
+4. Verify core works end-to-end before touching anything else
+5. Add supporting features in priority order from the plan
+6. Polish UI/UX — impecable standard
+7. Final end-to-end test
+8. Generate PITCH.md
+
+## IF SOMETHING BREAKS
+Stop. Do not refactor. Roll back to last checkpoint. Re-read the plan. Simplify the broken feature, then rebuild it.
+
+## DONE MEANS
+- App runs without crashing on the happy path
+- Every mandatory requirement from the challenge is met
+- UI looks finished, not like a prototype
+- PITCH.md exists and is filled out
